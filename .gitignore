@@ -1,0 +1,51 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+
+# Local paper / report artifacts kept out of the public repository.
+report/
+figures/
+Achille & Soatto.pdf
+main.aux
+main.bbl
+main.blg
+main.log
+main.out
+main.pdf
+main.tex
+
+# Common local caches and temporary outputs.
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.tmp
+*.bak
+*.swp
+
+# Local cleanup/archive area. Kept on disk, never published.
+.local_archive/
+
+# Local run state and diagnostic output.
+data/raw/.*
+data/raw/*.log
+data/raw/nohup_*.log
+data/raw/pull_*.log
+data/raw/*smoke*.jsonl
+data/raw/*gate*.jsonl
+data/raw/*probe*.jsonl
+data/raw/*.bak*
+data/raw/*before_*.jsonl
+data/raw/*removed_*.jsonl
+data/raw/*pre_sleep_prune*.jsonl
+data/raw/bbh_discarded_*/
+data/raw/bbh_sleep_checkpoint_*/
+
+# Regenerable diagnostic / smoke derived artifacts.
+data/derived/*smoke*
+data/derived/*dryrun*
+data/derived/*sanity*
+data/derived/*retry_gate*
+data/derived/mbpp_router_results_2models.jsonl
+data/derived/mbpp_router_summary_2models.json
+data/derived/dataset_comparison.*

@@ -1,0 +1,25 @@
+worker_logs:
+  - data/raw/runs_qwen2.5-coder_1.5b_full_20260616T0640Z.jsonl
+  - data/raw/runs_qwen2.5-coder_7b_full_20260616T0640Z.jsonl
+  - data/raw/runs_qwen2.5-coder_32b_full_20260616T0640Z.jsonl
+modes_file: data/derived/modes.json
+success_threshold: strict
+budget_attempts: 10
+execution_order: ["1.5b", "7b", "32b"]
+kfold:
+  n_folds: 5
+  stratify_by: mode
+  seed: 0
+router:
+  backend: codex_cli
+  model_env: ROUTER_MODEL
+  reasoning_effort: medium
+  temperature: 0
+  in_context: full_traces
+  parse_fail_default: {"n_1.5b": 0, "n_7b": 10, "n_32b": 0}
+estimation:
+  bootstrap_B: 1000
+paths:
+  results: data/derived/router_results.jsonl
+  summary: data/derived/router_summary.json
+  figures: figures/router

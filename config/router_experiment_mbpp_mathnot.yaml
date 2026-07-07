@@ -1,0 +1,33 @@
+worker_logs:
+  - data/raw/runs_qwen2.5-coder_1.5b_full_mbpp_2models_20260617T114444Z.jsonl
+  - data/raw/runs_qwen2.5-coder_7b_full_mbpp_2models_20260617T114444Z.jsonl
+  - data/raw/runs_qwen2.5-coder_32b_full_mbpp_32b_20260617T1335Z.jsonl
+modes_file: data/derived/mbpp_modes_mathnot.json
+mode_order: ["math", "nonmath"]
+success_threshold: strict
+budget_attempts: 10
+execution_order: ["1.5b", "7b", "32b"]
+kfold:
+  n_folds: 5
+  stratify_by: mode
+  seed: 0
+router:
+  backend: codex_cli
+  model_env: ROUTER_MODEL
+  reasoning_effort: medium
+  temperature: 0
+  in_context: full_traces
+  parse_fail_default: {"n_1.5b": 0, "n_7b": 10, "n_32b": 0}
+estimation:
+  bootstrap_B: 1000
+frontier:
+  clock: seconds
+  censoring_floor: 1.0e-3
+  bootstrap_B: 1000
+paths:
+  folds: data/derived/mbpp_folds_mathnot.json
+  results: data/derived/mbpp_router_results_mathnot.jsonl
+  summary: data/derived/mbpp_router_summary_mathnot.json
+  figures: figures/router_mbpp_mathnot
+  category_frontier: data/derived/category_frontier_mathnot.json
+  category_frontier_figures: figures/router_mbpp_mathnot

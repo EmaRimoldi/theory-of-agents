@@ -1,0 +1,20 @@
+{
+  "counts": {
+    "easy": 126,
+    "hard": 126,
+    "medium": 126
+  },
+  "cutoffs": [
+    21,
+    34
+  ],
+  "dataset": "mbppplus",
+  "mode_names": [
+    "easy",
+    "medium",
+    "hard"
+  ],
+  "n_modes": 3,
+  "n_problems": 378,
+  "proxy": "ref_solution_length"
+}

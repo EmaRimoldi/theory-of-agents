@@ -1,0 +1,32 @@
+worker_logs:
+  - data/raw/runs_qwen2.5_1.5b_smoke_bbh.jsonl
+modes_file: data/derived/bbh_modes.json
+allow_partial_modes: true
+mode_order: ["arithmetic", "logical_deduction", "language", "spatial_temporal", "algorithmic"]
+success_threshold: strict
+budget_attempts: 2
+execution_order: ["1.5b"]
+kfold:
+  n_folds: 1
+  stratify_by: mode
+  seed: 0
+router:
+  backend: mock
+  model_env: ROUTER_MODEL
+  reasoning_effort: medium
+  temperature: 0
+  in_context: full_traces
+  parse_fail_default: {"n_1.5b": 2}
+estimation:
+  bootstrap_B: 100
+frontier:
+  clock: seconds
+  censoring_floor: 1.0e-3
+  bootstrap_B: 100
+paths:
+  folds: data/derived/bbh_folds_smoke.json
+  results: data/derived/bbh_router_results_smoke.jsonl
+  summary: data/derived/bbh_router_summary_smoke.json
+  figures: figures/router_bbh_smoke
+  category_frontier: data/derived/bbh_family_frontier_smoke.json
+  category_frontier_figures: figures/router_bbh_smoke
